@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <a th:href="${'/product/create'}">新增商品</a>
+    <div th:each="product : ${products}">
+        商品名稱：<span th:text="${product.name}"></span><br/>
+        商品價格：<span th:text="${product.price}"></span><br/>
+        商品成本：<span th:text="${product.cost}"></span><br/>
+        <br/>
+    </div>
+</form>
+</body>
+</html>
