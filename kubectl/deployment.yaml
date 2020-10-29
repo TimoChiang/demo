@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-gke-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo
+  template:
+    metadata:
+      labels:
+        app: demo
+    spec:
+      containers:
+        - name: demo-app
+          image: gcr.io/store-search-268714/demo-gke:latest
+          ports:
+            - containerPort: 8081
+          readinessProbe:
+            httpGet:
+              path: /product
+              port: 8081
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            successThreshold: 1
